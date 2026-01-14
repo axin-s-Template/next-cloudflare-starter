@@ -1,4 +1,13 @@
 {
+  "Metadata": {
+    "name": "Next × Cloudflare 启动模板",
+    "title": "Next × Cloudflare 启动模板 — 极简边缘就绪 Next.js 方案",
+    "description": "使用 App Router 开发，用 OpenNext 打包，无需额外胶水即可部署到 Workers。",
+    "Blog": {
+      "title": "博客 — Next × Cloudflare 启动模板",
+      "description": "关于 Next.js + Cloudflare 的实践记录与发布经验。"
+    }
+  },
   "Home": {
     "eyebrow": "Next × Cloudflare",
     "badge": "启动模板",
@@ -45,5 +54,31 @@
     },
     "previewNote": "Preview 会在 Cloudflare 运行时上先跑一遍构建，再执行部署。",
     "footer": "面向边缘，保持极简。"
+  },
+  "Blog": {
+    "eyebrow": "产品笔记",
+    "title": "在边缘环境发布",
+    "subtitle": "一些关于 Next.js、OpenNext 与 Cloudflare Workers 的实践分享。",
+    "footer": "更多内容即将发布。",
+    "posts": {
+      "edge": {
+        "tag": "边缘",
+        "title": "为什么这个模板坚持边缘优先",
+        "excerpt": "降低冷启动，简化部署，让 App Router 发挥最大价值。",
+        "meta": "阅读 3 分钟"
+      },
+      "i18n": {
+        "tag": "国际化",
+        "title": "轻量且正确的多语言方案",
+        "excerpt": "next-intl 保持类型安全，同时让 hreflang 自动正确输出。",
+        "meta": "阅读 4 分钟"
+      },
+      "deploy": {
+        "tag": "发布",
+        "title": "从开发到 Workers 只需几步",
+        "excerpt": "OpenNext 打包配合 Cloudflare 预览，让上线更有把握。",
+        "meta": "阅读 5 分钟"
+      }
+    }
   }
 }
