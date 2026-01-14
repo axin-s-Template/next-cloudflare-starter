@@ -1,4 +1,5 @@
 import { routing } from "@/i18n/routing";
+import type { LocalePrefix, LocalePrefixMode } from "next-intl/routing";
 
 export function getBaseUrl(): string {
 	if (process.env.NEXT_PUBLIC_APP_URL) {
@@ -31,12 +32,18 @@ function normalizePathname(pathname?: string): string {
 export function getLocalePathname(pathname: string, locale: string): string {
 	const normalized = normalizePathname(pathname);
 	const suffix = normalized === "/" ? "" : normalized;
+	const localePrefix = routing.localePrefix as LocalePrefix<
+		typeof routing.locales,
+		LocalePrefixMode
+	> | null;
+	const localePrefixMode =
+		typeof localePrefix === "string" ? localePrefix : localePrefix?.mode;
 
-	if (routing.localePrefix === "never") {
+	if (localePrefixMode === "never") {
 		return normalized;
 	}
 
-	if (routing.localePrefix === "as-needed" && locale === routing.defaultLocale) {
+	if (localePrefixMode === "as-needed" && locale === routing.defaultLocale) {
 		return normalized;
 	}
 

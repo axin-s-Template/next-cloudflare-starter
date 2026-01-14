@@ -32,16 +32,16 @@ export default async function BlogPage({
 	const t = await getTranslations({ locale, namespace: "Blog" });
 
 	return (
-		<main className="min-h-screen bg-white text-[#111111]">
+		<main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
 			<div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-16 md:py-20">
 				<header className="flex flex-col gap-4">
-					<p className="text-xs uppercase tracking-[0.4em] text-[#666666]">
+					<p className="text-xs uppercase tracking-[0.4em] text-[var(--muted)]">
 						{t("eyebrow")}
 					</p>
 					<h1 className="text-4xl font-semibold leading-tight md:text-5xl">
 						{t("title")}
 					</h1>
-					<p className="max-w-2xl text-base leading-relaxed text-[#444444]">
+					<p className="max-w-2xl text-base leading-relaxed text-[var(--muted)]">
 						{t("subtitle")}
 					</p>
 				</header>
@@ -50,25 +50,25 @@ export default async function BlogPage({
 					{postKeys.map((key) => (
 						<article
 							key={key}
-							className="flex flex-col gap-3 rounded-2xl border border-[#e5e5e5] bg-white p-6"
+							className="flex flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
 						>
-							<p className="text-xs uppercase tracking-[0.3em] text-[#666666]">
+							<p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
 								{t(`posts.${key}.tag`)}
 							</p>
-							<h2 className="text-xl font-semibold text-[#111111]">
+							<h2 className="text-xl font-semibold text-[var(--foreground)]">
 								{t(`posts.${key}.title`)}
 							</h2>
-							<p className="text-sm leading-relaxed text-[#555555]">
+							<p className="text-sm leading-relaxed text-[var(--muted)]">
 								{t(`posts.${key}.excerpt`)}
 							</p>
-							<span className="text-xs text-[#999999]">
+							<span className="text-xs text-[var(--muted)]">
 								{t(`posts.${key}.meta`)}
 							</span>
 						</article>
 					))}
 				</section>
 
-				<footer className="text-xs uppercase tracking-[0.3em] text-[#666666]">
+				<footer className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
 					{t("footer")}
 				</footer>
 			</div>

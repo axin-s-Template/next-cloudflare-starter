@@ -6,63 +6,81 @@
     "Blog": {
       "title": "Blog — Next × Cloudflare Starter",
       "description": "Updates, notes, and patterns for shipping with Next.js on Cloudflare."
+    },
+    "Data": {
+      "title": "Data — Next × Cloudflare Starter",
+      "description": "Server Actions + React Query data fetching demo."
     }
   },
   "Home": {
-    "eyebrow": "Next × Cloudflare",
-    "badge": "Starter",
-    "title": "A minimal Next.js + Cloudflare starter for serious product teams.",
-    "subtitle": "Build with the App Router, package with OpenNext, and deploy to Workers without extra glue. Ant Design v6 provides dependable components while Tailwind v4 handles layout and polish.",
-    "cta": {
-      "primary": "Run locally",
-      "secondary": "Deployment guide"
+    "nav": {
+      "brand": "NCS",
+      "tagline": "nextjs cloudflare starter",
+      "data": "Data",
+      "blog": "Blog",
+      "theme": "Theme",
+      "light": "Light",
+      "dark": "Dark"
     },
-    "pillars": {
-      "next": {
-        "title": "Next.js App Router",
-        "body": "Modern routing and layouts with streaming-friendly defaults."
-      },
-      "workers": {
-        "title": "Cloudflare Workers",
-        "body": "Edge deployment with fast cold starts and global reach."
-      },
-      "opennext": {
-        "title": "OpenNext build",
-        "body": "Transforms your Next.js output into a Worker runtime package."
+    "intro": {
+      "label": "Overview",
+      "title": "Build edge-ready Next.js apps with Cloudflare in minutes.",
+      "subtitle": "NCS pairs the App Router with Cloudflare Workers, OpenNext packaging, and a modern UI stack for teams shipping fast.",
+      "pointsLabel": "Core highlights",
+      "points": {
+        "router": "App Router + Server Actions",
+        "edge": "Cloudflare Workers runtime",
+        "i18n": "Built-in next-intl locales",
+        "design": "Ant Design + Tailwind UI"
       }
     },
-    "structureTitle": "Project structure",
-    "structureIntro": "Keep everything in one place. Source lives in",
-    "structureMiddle": "configuration stays in the repo root, and OpenNext outputs to",
-    "structureOutro": ".",
-    "paths": {
-      "app": "src/app/",
-      "output": ".open-next",
-      "openNext": "open-next.config.ts",
-      "wrangler": "wrangler.jsonc"
+    "stack": {
+      "title": "Tech stack",
+      "subtitle": "A curated foundation for performance, UI, and DX on the edge.",
+      "badge": "Powered by",
+      "items": {
+        "next": {
+          "title": "Next.js App Router",
+          "body": "Layouts, streaming, and server actions with modern routing defaults."
+        },
+        "opennext": {
+          "title": "OpenNext + Cloudflare",
+          "body": "Packages the build for Workers and keeps the runtime lean."
+        },
+        "workers": {
+          "title": "Cloudflare Workers",
+          "body": "Edge deployment with fast cold starts and global reach."
+        },
+        "query": {
+          "title": "TanStack Query",
+          "body": "Client-side caching, refetching, and optimistic UX."
+        },
+        "ui": {
+          "title": "Ant Design + Tailwind",
+          "body": "Reliable components with utility-first layout and polish."
+        },
+        "intl": {
+          "title": "next-intl",
+          "body": "Typed translations and locale-aware routing."
+        }
+      }
     },
-    "structureItems": {
-      "app": "App Router pages & layout",
-      "openNext": "build pipeline",
-      "wrangler": "Workers config"
-    },
-    "commandsLabel": "Commands",
-    "commands": {
-      "dev": "pnpm dev",
-      "preview": "pnpm preview",
-      "deploy": "pnpm deploy"
-    },
-    "previewNote": "Preview runs your build on the Cloudflare runtime before you deploy.",
-    "data": {
-      "label": "Server Actions + React Query",
-      "title": "Live data from a server action",
-      "subtitle": "TanStack Query keeps the client cache warm while server actions fetch fresh data from the API.",
-      "refresh": "Refresh data",
-      "loading": "Fetching posts from the API...",
-      "error": "Unable to load posts right now.",
-      "postLabel": "Post"
-    },
-    "footer": "Edge-ready, minimal by design."
+    "footer": {
+      "summary": "© {year} NCS. Built for Cloudflare Workers.",
+      "authorPrefix": "Created by",
+      "authorLabel": "luckySnail"
+    }
+  },
+  "Data": {
+    "eyebrow": "Server Actions + React Query",
+    "title": "Live API data with a cached client",
+    "subtitle": "Server actions fetch from the API while TanStack Query manages caching, refetching, and loading states.",
+    "refresh": "Refresh data",
+    "refreshing": "Refreshing...",
+    "loading": "Fetching posts from the API...",
+    "error": "Unable to load posts right now.",
+    "postLabel": "Post",
+    "backHome": "Back to home"
   },
   "Blog": {
     "eyebrow": "Product notes",

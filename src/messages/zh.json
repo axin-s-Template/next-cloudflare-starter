@@ -6,63 +6,81 @@
     "Blog": {
       "title": "博客 — Next × Cloudflare 启动模板",
       "description": "关于 Next.js + Cloudflare 的实践记录与发布经验。"
+    },
+    "Data": {
+      "title": "数据获取 — Next × Cloudflare 启动模板",
+      "description": "Server Actions + React Query 数据获取示例。"
     }
   },
   "Home": {
-    "eyebrow": "Next × Cloudflare",
-    "badge": "启动模板",
-    "title": "面向严肃产品团队的极简 Next.js + Cloudflare 启动模板。",
-    "subtitle": "使用 App Router 开发，用 OpenNext 打包，无需额外胶水即可部署到 Workers。Ant Design v6 提供可靠组件，Tailwind v4 负责布局与细节。",
-    "cta": {
-      "primary": "本地运行",
-      "secondary": "部署指南"
+    "nav": {
+      "brand": "NCS",
+      "tagline": "nextjs cloudflare starter",
+      "data": "数据",
+      "blog": "博客",
+      "theme": "主题",
+      "light": "浅色",
+      "dark": "深色"
     },
-    "pillars": {
-      "next": {
-        "title": "Next.js App Router",
-        "body": "现代化路由与布局，默认支持流式渲染。"
-      },
-      "workers": {
-        "title": "Cloudflare Workers",
-        "body": "边缘部署，冷启动更快，全球覆盖。"
-      },
-      "opennext": {
-        "title": "OpenNext 构建",
-        "body": "将 Next.js 输出转换为 Worker 运行时包。"
+    "intro": {
+      "label": "项目简介",
+      "title": "面向边缘部署的 Next.js + Cloudflare 快速启动模板",
+      "subtitle": "NCS 聚焦最小可行的生产配置，结合 App Router、Cloudflare Workers 与 OpenNext 打包。",
+      "pointsLabel": "核心特性",
+      "points": {
+        "router": "App Router + Server Actions",
+        "edge": "Cloudflare Workers 运行时",
+        "i18n": "内置 next-intl 多语言",
+        "design": "Ant Design + Tailwind 设计系统"
       }
     },
-    "structureTitle": "项目结构",
-    "structureIntro": "内容集中管理，源码位于",
-    "structureMiddle": "配置保留在仓库根目录，OpenNext 输出到",
-    "structureOutro": "。",
-    "paths": {
-      "app": "src/app/",
-      "output": ".open-next",
-      "openNext": "open-next.config.ts",
-      "wrangler": "wrangler.jsonc"
+    "stack": {
+      "title": "技术栈",
+      "subtitle": "兼顾性能、UI 与开发体验的组合方案。",
+      "badge": "核心组件",
+      "items": {
+        "next": {
+          "title": "Next.js App Router",
+          "body": "布局、流式渲染与 Server Actions 的现代路由体系。"
+        },
+        "opennext": {
+          "title": "OpenNext + Cloudflare",
+          "body": "将构建产物打包为 Workers 可运行格式。"
+        },
+        "workers": {
+          "title": "Cloudflare Workers",
+          "body": "边缘部署，冷启动更快，全球覆盖。"
+        },
+        "query": {
+          "title": "TanStack Query",
+          "body": "客户端缓存、刷新与状态管理。"
+        },
+        "ui": {
+          "title": "Ant Design + Tailwind",
+          "body": "可靠组件 + 高效布局，细节可控。"
+        },
+        "intl": {
+          "title": "next-intl",
+          "body": "类型安全的多语言与路由。"
+        }
+      }
     },
-    "structureItems": {
-      "app": "App Router 页面与布局",
-      "openNext": "构建流水线",
-      "wrangler": "Workers 配置"
-    },
-    "commandsLabel": "常用命令",
-    "commands": {
-      "dev": "pnpm dev",
-      "preview": "pnpm preview",
-      "deploy": "pnpm deploy"
-    },
-    "previewNote": "Preview 会在 Cloudflare 运行时上先跑一遍构建，再执行部署。",
-    "data": {
-      "label": "Server Actions + React Query",
-      "title": "来自 Server Action 的实时数据",
-      "subtitle": "TanStack Query 负责缓存与刷新，Server Action 负责从接口拉取最新数据。",
-      "refresh": "刷新数据",
-      "loading": "正在从接口获取内容...",
-      "error": "暂时无法获取数据。",
-      "postLabel": "内容"
-    },
-    "footer": "面向边缘，保持极简。"
+    "footer": {
+      "summary": "© {year} NCS。为 Cloudflare Workers 而生。",
+      "authorPrefix": "作者",
+      "authorLabel": "luckySnail"
+    }
+  },
+  "Data": {
+    "eyebrow": "Server Actions + React Query",
+    "title": "带缓存的实时接口数据",
+    "subtitle": "Server Action 负责请求接口，TanStack Query 管理缓存、刷新与状态。",
+    "refresh": "刷新数据",
+    "refreshing": "刷新中...",
+    "loading": "正在从接口获取内容...",
+    "error": "暂时无法获取数据。",
+    "postLabel": "内容",
+    "backHome": "返回首页"
   },
   "Blog": {
     "eyebrow": "产品笔记",

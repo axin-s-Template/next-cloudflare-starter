@@ -1,201 +1,116 @@
 "use client";
 
-import { Button, Card, Divider, Tag } from "antd";
-import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "use-intl";
-import { fetchLatestPosts } from "@/actions/posts";
+import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { SiteFooter } from "@/components/SiteFooter";
+
+const stackKeys = ["next", "opennext", "workers", "query", "ui", "intl"] as const;
+const highlightKeys = ["router", "edge", "i18n", "design"] as const;
 
 export function HomeClient() {
 	const t = useTranslations("Home");
-
-	const pillars = [
-		{
-			title: t("pillars.next.title"),
-			body: t("pillars.next.body"),
-		},
-		{
-			title: t("pillars.workers.title"),
-			body: t("pillars.workers.body"),
-		},
-		{
-			title: t("pillars.opennext.title"),
-			body: t("pillars.opennext.body"),
-		},
-	];
-
-	const commands = [t("commands.dev"), t("commands.preview"), t("commands.deploy")];
-	const postsQuery = useQuery({
-		queryKey: ["latest-posts"],
-		queryFn: () => fetchLatestPosts(3),
-	});
-
-	const isLoadingPosts = postsQuery.status === "pending";
-	const postsError =
-		postsQuery.error instanceof Error
-			? postsQuery.error.message
-			: t("data.error");
+	const year = new Date().getFullYear();
 
 	return (
-		<div className="relative min-h-screen bg-white text-[#111111]">
-			<LocaleSwitcher />
-			<div className="mx-auto flex max-w-5xl flex-col px-6 py-16 md:py-20">
-				<header className="flex flex-col gap-6">
-					<div className="flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.4em] text-[#666666]">
-						<span>{t("eyebrow")}</span>
-						<Tag className="!border-[#111111] !text-[#111111] !bg-transparent">
-							{t("badge")}
-						</Tag>
+		<div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+			<div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6">
+				<header className="flex flex-wrap items-center justify-between gap-4 py-6">
+					<div className="flex items-baseline gap-3">
+						<span className="text-lg font-semibold tracking-tight">
+							{t("nav.brand")}
+						</span>
+						<span className="text-xs uppercase tracking-[0.35em] text-[var(--muted)]">
+							({t("nav.tagline")})
+						</span>
 					</div>
-					<h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-						{t("title")}
-					</h1>
-					<p className="max-w-2xl text-base leading-relaxed text-[#444444]">
-						{t("subtitle")}
-					</p>
-					<div className="flex flex-wrap gap-3">
-						<Button
-							type="primary"
-							size="large"
-							className="!bg-[#111111] !border-[#111111] hover:!bg-[#111111]/90"
+					<nav className="flex flex-wrap items-center gap-4 text-sm text-[var(--muted)]">
+						<Link
+							href="/data"
+							className="transition hover:text-[var(--foreground)]"
 						>
-							{t("cta.primary")}
-						</Button>
-						<Button size="large" className="!border-[#111111] !text-[#111111]">
-							{t("cta.secondary")}
-						</Button>
-					</div>
+							{t("nav.data")}
+						</Link>
+						<Link
+							href="/blog"
+							className="transition hover:text-[var(--foreground)]"
+						>
+							{t("nav.blog")}
+						</Link>
+						<LocaleSwitcher inline />
+					</nav>
 				</header>
 
-				<Divider className="!my-12 !border-[#e5e5e5]" />
-
-				<section className="grid gap-6 md:grid-cols-3">
-					{pillars.map((pillar) => (
-						<Card
-							key={pillar.title}
-							className="!border-[#e5e5e5] !bg-white"
-							styles={{ body: { padding: 20 } }}
-						>
-							<h3 className="text-lg font-semibold text-[#111111]">
-								{pillar.title}
-							</h3>
-							<p className="mt-2 text-sm leading-relaxed text-[#555555]">
-								{pillar.body}
+				<main className="flex flex-1 flex-col gap-12 py-10 md:py-16">
+					<section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+						<div className="flex flex-col gap-4">
+							<p className="text-xs uppercase tracking-[0.4em] text-[var(--muted)]">
+								{t("intro.label")}
 							</p>
-						</Card>
-					))}
-				</section>
-
-				<section className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-					<div className="flex flex-col gap-4">
-						<h2 className="text-2xl font-semibold text-[#111111]">
-							{t("structureTitle")}
-						</h2>
-						<p className="text-sm leading-relaxed text-[#555555]">
-							{t("structureIntro")}{" "}
-							<span className="font-mono">{t("paths.app")}</span>,{" "}
-							{t("structureMiddle")}{" "}
-							<span className="font-mono">{t("paths.output")}</span>
-							{t("structureOutro")}
-						</p>
-						<div className="border border-[#e5e5e5] px-4 py-3 text-sm text-[#444444]">
-							<ul className="space-y-2">
-								<li>
-									<span className="font-mono">{t("paths.app")}</span> — {" "}
-									{t("structureItems.app")}
-								</li>
-								<li>
-									<span className="font-mono">{t("paths.openNext")}</span> —
-									{" "}
-									{t("structureItems.openNext")}
-								</li>
-								<li>
-									<span className="font-mono">{t("paths.wrangler")}</span> — {" "}
-									{t("structureItems.wrangler")}
-								</li>
+							<h1 className="text-4xl font-semibold leading-tight md:text-5xl">
+								{t("intro.title")}
+							</h1>
+							<p className="max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+								{t("intro.subtitle")}
+							</p>
+						</div>
+						<div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+							<p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+								{t("intro.pointsLabel")}
+							</p>
+							<ul className="mt-4 space-y-3 text-sm text-[var(--foreground)]">
+								{highlightKeys.map((key) => (
+									<li
+										key={key}
+										className="flex items-center justify-between border-b border-dashed border-[var(--border)] pb-3 last:border-b-0 last:pb-0"
+									>
+										<span>{t(`intro.points.${key}`)}</span>
+									</li>
+								))}
 							</ul>
 						</div>
-					</div>
+					</section>
 
-					<Card
-						className="!border-[#e5e5e5] !bg-white"
-						styles={{ body: { padding: 20 } }}
-					>
-						<p className="text-xs uppercase tracking-[0.3em] text-[#666666]">
-							{t("commandsLabel")}
-						</p>
-						<div className="mt-4 flex flex-col gap-2 text-sm text-[#111111]">
-							{commands.map((command) => (
+					<section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] px-6 py-8 md:px-10">
+						<div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+							<div>
+								<h2 className="text-2xl font-semibold text-[var(--foreground)]">
+									{t("stack.title")}
+								</h2>
+								<p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
+									{t("stack.subtitle")}
+								</p>
+							</div>
+							<span className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+								{t("stack.badge")}
+							</span>
+						</div>
+						<div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+							{stackKeys.map((key) => (
 								<div
-									key={command}
-									className="border border-[#e5e5e5] px-3 py-2 font-mono"
+									key={key}
+									className="rounded-2xl border border-[var(--border)] bg-[var(--background)] p-4"
 								>
-									{command}
+									<h3 className="text-base font-semibold text-[var(--foreground)]">
+										{t(`stack.items.${key}.title`)}
+									</h3>
+									<p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+										{t(`stack.items.${key}.body`)}
+									</p>
 								</div>
 							))}
 						</div>
-						<p className="mt-4 text-xs leading-relaxed text-[#666666]">
-							{t("previewNote")}
-						</p>
-					</Card>
-				</section>
+					</section>
+				</main>
 
-				<section className="mt-12">
-					<div className="flex flex-wrap items-center justify-between gap-4">
-						<div>
-							<p className="text-xs uppercase tracking-[0.3em] text-[#666666]">
-								{t("data.label")}
-							</p>
-							<h2 className="mt-2 text-2xl font-semibold text-[#111111]">
-								{t("data.title")}
-							</h2>
-							<p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#555555]">
-								{t("data.subtitle")}
-							</p>
-						</div>
-						<Button
-							onClick={() => postsQuery.refetch()}
-							loading={postsQuery.isFetching}
-							className="!border-[#111111] !text-[#111111]"
-						>
-							{t("data.refresh")}
-						</Button>
-					</div>
-
-					<div className="mt-6 grid gap-4 md:grid-cols-3">
-						{isLoadingPosts ? (
-							<Card className="!border-[#e5e5e5]" styles={{ body: { padding: 20 } }}>
-								<p className="text-sm text-[#666666]">{t("data.loading")}</p>
-							</Card>
-						) : postsQuery.isError ? (
-							<Card className="!border-[#e5e5e5]" styles={{ body: { padding: 20 } }}>
-								<p className="text-sm text-[#b42318]">{postsError}</p>
-							</Card>
-						) : (
-							postsQuery.data?.map((post) => (
-								<Card
-									key={post.id}
-									className="!border-[#e5e5e5] !bg-white"
-									styles={{ body: { padding: 20 } }}
-								>
-									<p className="text-xs uppercase tracking-[0.2em] text-[#666666]">
-										{t("data.postLabel")} #{post.id}
-									</p>
-									<h3 className="mt-2 text-base font-semibold text-[#111111]">
-										{post.title}
-									</h3>
-									<p className="mt-2 text-sm leading-relaxed text-[#555555]">
-										{post.body}
-									</p>
-								</Card>
-							))
-						)}
-					</div>
-				</section>
-
-				<footer className="mt-16 text-xs uppercase tracking-[0.3em] text-[#666666]">
-					{t("footer")}
-				</footer>
+				<SiteFooter
+					summary={t("footer.summary", { year })}
+					authorPrefix={t("footer.authorPrefix")}
+					authorLabel={t("footer.authorLabel")}
+					authorHref="https://luckysnail.cn/"
+					rightSlot={<ThemeToggle ariaLabel={t("nav.theme")} />}
+				/>
 			</div>
 		</div>
 	);
