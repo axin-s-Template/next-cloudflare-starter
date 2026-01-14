@@ -1,7 +1,9 @@
 "use client";
 
 import { Button, Card, Divider, Tag } from "antd";
+import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "use-intl";
+import { fetchLatestPosts } from "@/actions/posts";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 
 export function HomeClient() {
@@ -23,6 +25,16 @@ export function HomeClient() {
 	];
 
 	const commands = [t("commands.dev"), t("commands.preview"), t("commands.deploy")];
+	const postsQuery = useQuery({
+		queryKey: ["latest-posts"],
+		queryFn: () => fetchLatestPosts(3),
+	});
+
+	const isLoadingPosts = postsQuery.status === "pending";
+	const postsError =
+		postsQuery.error instanceof Error
+			? postsQuery.error.message
+			: t("data.error");
 
 	return (
 		<div className="relative min-h-screen bg-white text-[#111111]">
@@ -126,6 +138,59 @@ export function HomeClient() {
 							{t("previewNote")}
 						</p>
 					</Card>
+				</section>
+
+				<section className="mt-12">
+					<div className="flex flex-wrap items-center justify-between gap-4">
+						<div>
+							<p className="text-xs uppercase tracking-[0.3em] text-[#666666]">
+								{t("data.label")}
+							</p>
+							<h2 className="mt-2 text-2xl font-semibold text-[#111111]">
+								{t("data.title")}
+							</h2>
+							<p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#555555]">
+								{t("data.subtitle")}
+							</p>
+						</div>
+						<Button
+							onClick={() => postsQuery.refetch()}
+							loading={postsQuery.isFetching}
+							className="!border-[#111111] !text-[#111111]"
+						>
+							{t("data.refresh")}
+						</Button>
+					</div>
+
+					<div className="mt-6 grid gap-4 md:grid-cols-3">
+						{isLoadingPosts ? (
+							<Card className="!border-[#e5e5e5]" styles={{ body: { padding: 20 } }}>
+								<p className="text-sm text-[#666666]">{t("data.loading")}</p>
+							</Card>
+						) : postsQuery.isError ? (
+							<Card className="!border-[#e5e5e5]" styles={{ body: { padding: 20 } }}>
+								<p className="text-sm text-[#b42318]">{postsError}</p>
+							</Card>
+						) : (
+							postsQuery.data?.map((post) => (
+								<Card
+									key={post.id}
+									className="!border-[#e5e5e5] !bg-white"
+									styles={{ body: { padding: 20 } }}
+								>
+									<p className="text-xs uppercase tracking-[0.2em] text-[#666666]">
+										{t("data.postLabel")} #{post.id}
+									</p>
+									<h3 className="mt-2 text-base font-semibold text-[#111111]">
+										{post.title}
+									</h3>
+									<p className="mt-2 text-sm leading-relaxed text-[#555555]">
+										{post.body}
+									</p>
+								</Card>
+							))
+						)}
+					</div>
 				</section>
 
 				<footer className="mt-16 text-xs uppercase tracking-[0.3em] text-[#666666]">

@@ -53,6 +53,15 @@
       "deploy": "pnpm deploy"
     },
     "previewNote": "Preview 会在 Cloudflare 运行时上先跑一遍构建，再执行部署。",
+    "data": {
+      "label": "Server Actions + React Query",
+      "title": "来自 Server Action 的实时数据",
+      "subtitle": "TanStack Query 负责缓存与刷新，Server Action 负责从接口拉取最新数据。",
+      "refresh": "刷新数据",
+      "loading": "正在从接口获取内容...",
+      "error": "暂时无法获取数据。",
+      "postLabel": "内容"
+    },
     "footer": "面向边缘，保持极简。"
   },
   "Blog": {

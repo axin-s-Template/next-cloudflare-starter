@@ -5,6 +5,7 @@ import type { AbstractIntlMessages } from "use-intl";
 import { StyleProvider } from "@ant-design/cssinjs";
 import { NextIntlClientProvider } from "next-intl";
 import { ConfigProvider } from "antd";
+import { QueryProvider } from "@/components/QueryProvider";
 
 export function Providers({
 	children,
@@ -16,12 +17,14 @@ export function Providers({
 	messages: AbstractIntlMessages;
 }) {
 	return (
-		<StyleProvider layer>
-			<ConfigProvider>
-				<NextIntlClientProvider locale={locale} messages={messages}>
-					{children}
-				</NextIntlClientProvider>
-			</ConfigProvider>
-		</StyleProvider>
+		<QueryProvider>
+			<StyleProvider layer>
+				<ConfigProvider>
+					<NextIntlClientProvider locale={locale} messages={messages}>
+						{children}
+					</NextIntlClientProvider>
+				</ConfigProvider>
+			</StyleProvider>
+		</QueryProvider>
 	);
 }

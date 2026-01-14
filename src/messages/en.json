@@ -53,6 +53,15 @@
       "deploy": "pnpm deploy"
     },
     "previewNote": "Preview runs your build on the Cloudflare runtime before you deploy.",
+    "data": {
+      "label": "Server Actions + React Query",
+      "title": "Live data from a server action",
+      "subtitle": "TanStack Query keeps the client cache warm while server actions fetch fresh data from the API.",
+      "refresh": "Refresh data",
+      "loading": "Fetching posts from the API...",
+      "error": "Unable to load posts right now.",
+      "postLabel": "Post"
+    },
     "footer": "Edge-ready, minimal by design."
   },
   "Blog": {

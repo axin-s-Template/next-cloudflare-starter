@@ -19,6 +19,7 @@
 	"dependencies": {
 		"@ant-design/cssinjs": "^2.0.2",
 		"@opennextjs/cloudflare": "^1.14.4",
+		"@tanstack/react-query": "^5.90.17",
 		"antd": "^6.2.0",
 		"geist": "^1.5.1",
 		"next": "16.1.1",
