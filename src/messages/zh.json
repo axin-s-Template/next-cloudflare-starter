@@ -1,0 +1,49 @@
+{
+  "Home": {
+    "eyebrow": "Next × Cloudflare",
+    "badge": "启动模板",
+    "title": "面向严肃产品团队的极简 Next.js + Cloudflare 启动模板。",
+    "subtitle": "使用 App Router 开发，用 OpenNext 打包，无需额外胶水即可部署到 Workers。Ant Design v6 提供可靠组件，Tailwind v4 负责布局与细节。",
+    "cta": {
+      "primary": "本地运行",
+      "secondary": "部署指南"
+    },
+    "pillars": {
+      "next": {
+        "title": "Next.js App Router",
+        "body": "现代化路由与布局，默认支持流式渲染。"
+      },
+      "workers": {
+        "title": "Cloudflare Workers",
+        "body": "边缘部署，冷启动更快，全球覆盖。"
+      },
+      "opennext": {
+        "title": "OpenNext 构建",
+        "body": "将 Next.js 输出转换为 Worker 运行时包。"
+      }
+    },
+    "structureTitle": "项目结构",
+    "structureIntro": "内容集中管理，源码位于",
+    "structureMiddle": "配置保留在仓库根目录，OpenNext 输出到",
+    "structureOutro": "。",
+    "paths": {
+      "app": "src/app/",
+      "output": ".open-next",
+      "openNext": "open-next.config.ts",
+      "wrangler": "wrangler.jsonc"
+    },
+    "structureItems": {
+      "app": "App Router 页面与布局",
+      "openNext": "构建流水线",
+      "wrangler": "Workers 配置"
+    },
+    "commandsLabel": "常用命令",
+    "commands": {
+      "dev": "pnpm dev",
+      "preview": "pnpm preview",
+      "deploy": "pnpm deploy"
+    },
+    "previewNote": "Preview 会在 Cloudflare 运行时上先跑一遍构建，再执行部署。",
+    "footer": "面向边缘，保持极简。"
+  }
+}

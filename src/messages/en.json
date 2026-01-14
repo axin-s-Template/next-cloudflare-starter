@@ -1,0 +1,49 @@
+{
+  "Home": {
+    "eyebrow": "Next × Cloudflare",
+    "badge": "Starter",
+    "title": "A minimal Next.js + Cloudflare starter for serious product teams.",
+    "subtitle": "Build with the App Router, package with OpenNext, and deploy to Workers without extra glue. Ant Design v6 provides dependable components while Tailwind v4 handles layout and polish.",
+    "cta": {
+      "primary": "Run locally",
+      "secondary": "Deployment guide"
+    },
+    "pillars": {
+      "next": {
+        "title": "Next.js App Router",
+        "body": "Modern routing and layouts with streaming-friendly defaults."
+      },
+      "workers": {
+        "title": "Cloudflare Workers",
+        "body": "Edge deployment with fast cold starts and global reach."
+      },
+      "opennext": {
+        "title": "OpenNext build",
+        "body": "Transforms your Next.js output into a Worker runtime package."
+      }
+    },
+    "structureTitle": "Project structure",
+    "structureIntro": "Keep everything in one place. Source lives in",
+    "structureMiddle": "configuration stays in the repo root, and OpenNext outputs to",
+    "structureOutro": ".",
+    "paths": {
+      "app": "src/app/",
+      "output": ".open-next",
+      "openNext": "open-next.config.ts",
+      "wrangler": "wrangler.jsonc"
+    },
+    "structureItems": {
+      "app": "App Router pages & layout",
+      "openNext": "build pipeline",
+      "wrangler": "Workers config"
+    },
+    "commandsLabel": "Commands",
+    "commands": {
+      "dev": "pnpm dev",
+      "preview": "pnpm preview",
+      "deploy": "pnpm deploy"
+    },
+    "previewNote": "Preview runs your build on the Cloudflare runtime before you deploy.",
+    "footer": "Edge-ready, minimal by design."
+  }
+}

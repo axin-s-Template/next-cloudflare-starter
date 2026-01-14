@@ -22,8 +22,10 @@
 		"antd": "^6.2.0",
 		"geist": "^1.5.1",
 		"next": "16.1.1",
+		"next-intl": "^4.7.0",
 		"react": "19.2.3",
-		"react-dom": "19.2.3"
+		"react-dom": "19.2.3",
+		"use-intl": "^4.7.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.11",

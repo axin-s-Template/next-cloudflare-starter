@@ -1,42 +1,49 @@
 "use client";
 
 import { Button, Card, Divider, Tag } from "antd";
-
-const pillars = [
-  {
-    title: "Next.js App Router",
-    body: "Modern routing and layouts with streaming-friendly defaults.",
-  },
-  {
-    title: "Cloudflare Workers",
-    body: "Edge deployment with fast cold starts and global reach.",
-  },
-  {
-    title: "OpenNext build",
-    body: "Transforms your Next.js output into a Worker runtime package.",
-  },
-];
-
-const commands = ["pnpm dev", "pnpm preview", "pnpm deploy"];
+import { useTranslations } from "use-intl";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 
 export default function Home() {
+  const t = useTranslations("Home");
+
+  const pillars = [
+    {
+      title: t("pillars.next.title"),
+      body: t("pillars.next.body"),
+    },
+    {
+      title: t("pillars.workers.title"),
+      body: t("pillars.workers.body"),
+    },
+    {
+      title: t("pillars.opennext.title"),
+      body: t("pillars.opennext.body"),
+    },
+  ];
+
+  const commands = [
+    t("commands.dev"),
+    t("commands.preview"),
+    t("commands.deploy"),
+  ];
+
   return (
-    <div className="min-h-screen bg-white text-[#111111]">
+    <div className="relative min-h-screen bg-white text-[#111111]">
+      <LocaleSwitcher />
       <div className="mx-auto flex max-w-5xl flex-col px-6 py-16 md:py-20">
         <header className="flex flex-col gap-6">
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.4em] text-[#666666]">
-            <span>Next × Cloudflare</span>
+            <span>{t("eyebrow")}</span>
             <Tag className="!border-[#111111] !text-[#111111] !bg-transparent">
-              Starter
+              {t("badge")}
             </Tag>
           </div>
           <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-            A minimal Next.js + Cloudflare starter for serious product teams.
+            {t("title")}
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-[#444444]">
-            Build with the App Router, package with OpenNext, and deploy to
-            Workers without extra glue. Ant Design v6 provides dependable
-            components while Tailwind v4 handles layout and polish.
+            {t("subtitle")}
           </p>
           <div className="flex flex-wrap gap-3">
             <Button
@@ -44,10 +51,10 @@ export default function Home() {
               size="large"
               className="!bg-[#111111] !border-[#111111] hover:!bg-[#111111]/90"
             >
-              Run locally
+              {t("cta.primary")}
             </Button>
             <Button size="large" className="!border-[#111111] !text-[#111111]">
-              Deployment guide
+              {t("cta.secondary")}
             </Button>
           </div>
         </header>
@@ -74,27 +81,32 @@ export default function Home() {
         <section className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-semibold text-[#111111]">
-              Project structure
+              {t("structureTitle")}
             </h2>
             <p className="text-sm leading-relaxed text-[#555555]">
-              Keep everything in one place. Source lives in{" "}
-              <span className="font-mono">src/app</span>, configuration stays in
-              the repo root, and OpenNext outputs to{" "}
-              <span className="font-mono">.open-next</span>.
+              {t("structureIntro")} {" "}
+              <span className="font-mono">{t("paths.app")}</span>,
+              {" "}
+              {t("structureMiddle")} {" "}
+              <span className="font-mono">{t("paths.output")}</span>
+              {t("structureOutro")}
             </p>
             <div className="border border-[#e5e5e5] px-4 py-3 text-sm text-[#444444]">
               <ul className="space-y-2">
                 <li>
-                  <span className="font-mono">src/app/</span> — App Router pages
-                  & layout
+                  <span className="font-mono">{t("paths.app")}</span> —
+                  {" "}
+                  {t("structureItems.app")}
                 </li>
                 <li>
-                  <span className="font-mono">open-next.config.ts</span> — build
-                  pipeline
+                  <span className="font-mono">{t("paths.openNext")}</span> —
+                  {" "}
+                  {t("structureItems.openNext")}
                 </li>
                 <li>
-                  <span className="font-mono">wrangler.jsonc</span> — Workers
-                  config
+                  <span className="font-mono">{t("paths.wrangler")}</span> —
+                  {" "}
+                  {t("structureItems.wrangler")}
                 </li>
               </ul>
             </div>
@@ -105,7 +117,7 @@ export default function Home() {
             styles={{ body: { padding: 20 } }}
           >
             <p className="text-xs uppercase tracking-[0.3em] text-[#666666]">
-              Commands
+              {t("commandsLabel")}
             </p>
             <div className="mt-4 flex flex-col gap-2 text-sm text-[#111111]">
               {commands.map((command) => (
@@ -118,14 +130,13 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-4 text-xs leading-relaxed text-[#666666]">
-              Preview runs your build on the Cloudflare runtime before you
-              deploy.
+              {t("previewNote")}
             </p>
           </Card>
         </section>
 
         <footer className="mt-16 text-xs uppercase tracking-[0.3em] text-[#666666]">
-          Edge-ready, minimal by design.
+          {t("footer")}
         </footer>
       </div>
     </div>
