@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistMono, GeistSans } from "geist/font";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -17,7 +18,9 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
-			<body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>{children}</body>
+			<body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	);
 }

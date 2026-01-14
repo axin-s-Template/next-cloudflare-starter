@@ -1,52 +1,110 @@
-import Image from "next/image";
+"use client";
+
+import { Button, Card, Divider, Tag } from "antd";
+
+const pillars = [
+	{
+		title: "Next.js App Router",
+		body: "Modern routing and layouts with streaming-friendly defaults.",
+	},
+	{
+		title: "Cloudflare Workers",
+		body: "Edge deployment with fast cold starts and global reach.",
+	},
+	{
+		title: "OpenNext build",
+		body: "Transforms your Next.js output into a Worker runtime package.",
+	},
+];
+
+const commands = ["pnpm dev", "pnpm preview", "pnpm deploy"];
 
 export default function Home() {
 	return (
-		<div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-			<main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-				<Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
-				<ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-					<li className="mb-2 tracking-[-.01em]">
-						Get started by editing{" "}
-						<code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-							src/app/page.tsx
-						</code>
-						.
-					</li>
-					<li className="tracking-[-.01em]">Save and see your changes instantly.</li>
-				</ol>
+		<div className="min-h-screen bg-white text-[#111111]">
+			<div className="mx-auto flex max-w-5xl flex-col px-6 py-16 md:py-20">
+				<header className="flex flex-col gap-6">
+					<div className="flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.4em] text-[#666666]">
+						<span>Next × Cloudflare</span>
+						<Tag className="!border-[#111111] !text-[#111111] !bg-transparent">Starter</Tag>
+					</div>
+					<h1 className="text-4xl font-semibold leading-tight md:text-5xl">
+						A minimal Next.js + Cloudflare starter for serious product teams.
+					</h1>
+					<p className="max-w-2xl text-base leading-relaxed text-[#444444]">
+						Build with the App Router, package with OpenNext, and deploy to Workers without extra glue.
+						Ant Design v6 provides dependable components while Tailwind v4 handles layout and polish.
+					</p>
+					<div className="flex flex-wrap gap-3">
+						<Button
+							type="primary"
+							size="large"
+							className="!bg-[#111111] !border-[#111111] hover:!bg-[#111111]/90"
+						>
+							Run locally
+						</Button>
+						<Button size="large" className="!border-[#111111] !text-[#111111]">
+							Deployment guide
+						</Button>
+					</div>
+				</header>
 
-				<div className="flex gap-4 items-center flex-col sm:flex-row">
-					<a
-						className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-						href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Read our docs
-					</a>
-				</div>
-			</main>
-			<footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-				<a
-					className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-					href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-					Learn
-				</a>
-				<a
-					className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-					href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-					Go to nextjs.org →
-				</a>
-			</footer>
+				<Divider className="!my-12 !border-[#e5e5e5]" />
+
+				<section className="grid gap-6 md:grid-cols-3">
+					{pillars.map((pillar) => (
+						<Card
+							key={pillar.title}
+							className="!border-[#e5e5e5] !bg-white"
+							styles={{ body: { padding: 20 } }}
+						>
+							<h3 className="text-lg font-semibold text-[#111111]">{pillar.title}</h3>
+							<p className="mt-2 text-sm leading-relaxed text-[#555555]">{pillar.body}</p>
+						</Card>
+					))}
+				</section>
+
+				<section className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+					<div className="flex flex-col gap-4">
+						<h2 className="text-2xl font-semibold text-[#111111]">Project structure</h2>
+						<p className="text-sm leading-relaxed text-[#555555]">
+							Keep everything in one place. Source lives in <span className="font-mono">src/app</span>,
+							configuration stays in the repo root, and OpenNext outputs to <span className="font-mono">.open-next</span>.
+						</p>
+						<div className="border border-[#e5e5e5] px-4 py-3 text-sm text-[#444444]">
+							<ul className="space-y-2">
+								<li>
+									<span className="font-mono">src/app/</span> — App Router pages & layout
+								</li>
+								<li>
+									<span className="font-mono">open-next.config.ts</span> — build pipeline
+								</li>
+								<li>
+									<span className="font-mono">wrangler.jsonc</span> — Workers config
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<Card className="!border-[#e5e5e5] !bg-white" styles={{ body: { padding: 20 } }}>
+						<p className="text-xs uppercase tracking-[0.3em] text-[#666666]">Commands</p>
+						<div className="mt-4 flex flex-col gap-2 text-sm text-[#111111]">
+							{commands.map((command) => (
+								<div key={command} className="border border-[#e5e5e5] px-3 py-2 font-mono">
+									{command}
+								</div>
+							))}
+						</div>
+						<p className="mt-4 text-xs leading-relaxed text-[#666666]">
+							Preview runs your build on the Cloudflare runtime before you deploy.
+						</p>
+					</Card>
+				</section>
+
+				<footer className="mt-16 text-xs uppercase tracking-[0.3em] text-[#666666]">
+					Edge-ready, minimal by design.
+				</footer>
+			</div>
 		</div>
 	);
 }
