@@ -7,6 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
+		"postinstall": "node scripts/patch-next-setimmediate.cjs",
 		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
 		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
 		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
@@ -14,6 +15,7 @@
 	},
 	"dependencies": {
 		"@opennextjs/cloudflare": "^1.14.4",
+		"geist": "^1.5.1",
 		"next": "16.1.1",
 		"react": "19.2.3",
 		"react-dom": "19.2.3"
